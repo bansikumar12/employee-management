@@ -9,7 +9,7 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const [userData] = useContext(AuthContext);
 
-  // Auto login if already stored
+ 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("loggedInUser");
 
@@ -22,9 +22,8 @@ const App = () => {
 
   
 
-  // LOGIN FUNCTION
   const handleLogin = (email, password) => {
-    // Admin Login
+    
     if (email === "admin@mp.com" && password === "123") {
       const adminUser = { role: "admin" };
       setUser("admin");
@@ -32,13 +31,13 @@ const App = () => {
       return;
     }
 
-    // Wait for employee data
+   
     if (!userData) {
       alert("Loading data... Please try again.");
       return;
     }
 
-    // Employee Login
+   
     const employee = userData.find(
       (emp) =>
         emp.email.trim().toLowerCase() ===
@@ -64,7 +63,7 @@ const App = () => {
     alert("Invalid credentials");
   };
 
-  // LOGOUT FUNCTION
+ 
  const handleLogout = () => {
   localStorage.removeItem("loggedInUser");
   setUser(null);
