@@ -1,37 +1,76 @@
-
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../context/AuthProvider';
-
+import React, { useContext } from 'react'
+import { AuthContext } from '../../../context/AuthProvider'
 
 const AllTask = () => {
-  const [userData, setUserData] = useContext(AuthContext);
 
-  return (
-    <div className='p-4 bg-[#1c1c1c]  overflow-auto  rounded mt-5 '>
-        <div
-    className='bg-red-400 py-2 mb-2 flex justify-between px-4 rounded'
-  >
-    <h2 className='w-1/5 font-bold p-2 text-white bg-red-600'>Employee Name</h2>
-    <h3 className='w-1/5 font-bold p-2 text-white bg-red-600'>New Tasks</h3>
-    <h5 className='w-1/5 font-bold p-2 text-white bg-red-600'>Active Task</h5>
-    <h5 className='w-1/5 font-bold p-2 text-white bg-red-600'>Completed</h5>
-    <h5 className='w-1/5 font-bold p-2 text-white bg-red-600'>Failed</h5>
-  </div>
-    
-       {userData.map(function(elem,idx) {
-  return  <div key={idx} className=' border-emerald-500 border-2 py-2 mb-2  flex justify-between px-4 rounded'
-  >
-    <h3  className='w-1/6 font-semibold key text-white'>{elem.firstname}</h3>
-    <h2 className='w-1/6 font-semibold text-white'>{elem.taskCounts.newTask}</h2>
-    <h5 className='w-1/6 font-semibold text-white'>{elem.taskCounts.active}</h5>
-    <h5 className='w-1/6 font-semibold text-white'>{elem.taskCounts.completed}</h5>
-    <h5 className='w-1/6 font-semibold text-white'>{elem.taskCounts.failed}</h5>
-  </div>
-})}
-     </div>
+    const [userData, setUserData] = useContext(AuthContext)
 
-   
-  );
-};
+    return (
+        <div className='bg-[#1c1c1c] p-5 rounded-xl mt-5 shadow-lg overflow-x-auto'>
 
-export default AllTask;
+            
+            <div className='bg-[#2a2a2a] border border-gray-700 mb-3 py-3 px-4 flex items-center justify-between rounded-lg min-w-[800px]'>
+
+                <h2 className='text-sm font-semibold text-gray-300 w-1/5'>
+                    Employee Name
+                </h2>
+
+                <h3 className='text-sm font-semibold text-blue-400 w-1/5 text-center'>
+                    New Task
+                </h3>
+
+                <h3 className='text-sm font-semibold text-yellow-400 w-1/5 text-center'>
+                    Active Task
+                </h3>
+
+                <h3 className='text-sm font-semibold text-green-400 w-1/5 text-center'>
+                    Completed
+                </h3>
+
+                <h3 className='text-sm font-semibold text-red-400 w-1/5 text-center'>
+                    Failed
+                </h3>
+
+            </div>
+
+            {/* Employee Rows */}
+            <div className='min-w-[800px]'>
+
+                {userData && userData.map((elem, idx) => (
+
+                    <div
+                        key={idx}
+                        className='bg-[#242424] hover:bg-[#2d2d2d] border border-gray-700 mb-2 py-3 px-4 flex items-center justify-between rounded-lg transition'
+                    >
+
+                        <h2 className='text-sm font-medium text-white w-1/5'>
+                            {elem.firstname}
+                        </h2>
+
+                        <h3 className='text-sm font-semibold text-blue-400 w-1/5 text-center'>
+                            {elem.taskCounts.newTask}
+                        </h3>
+
+                        <h3 className='text-sm font-semibold text-yellow-400 w-1/5 text-center'>
+                            {elem.taskCounts.active}
+                        </h3>
+
+                        <h3 className='text-sm font-semibold text-green-400 w-1/5 text-center'>
+                            {elem.taskCounts.completed}
+                        </h3>
+
+                        <h3 className='text-sm font-semibold text-red-400 w-1/5 text-center'>
+                            {elem.taskCounts.failed}
+                        </h3>
+
+                    </div>
+
+                ))}
+
+            </div>
+
+        </div>
+    )
+}
+
+export default AllTask
