@@ -1,20 +1,33 @@
-import React from 'react'
+import React from "react";
 
-const FailedTask = (props) => {
+const FailedTask = ({ data }) => {
   return (
-     <div className=" bg-yellow-400 flex-shrink-0 p-5 text-white  font-bold text-2xl rounded-2xl h-full w-[300px]">
-          <div className='flex justify-between'>
-            <h3 className='bg-red-600 px-3 text-sm py-1 rounded'>{props.data.category}</h3>
-            <h4 className='text-lg'>{props.data.date}</h4>
-          </div>
-            <h2 className='text-xl mt-2 font-bold'>{props.data.title}</h2>
-            <p className='mt-5 text-sm'>{props.data.description}</p>
-            <div className='  mt-5'>
-            <button className="bg-red-500 text-lg text-white px-2 py-1 rounded">Failed</button>
-          </div>  
-      </div>
-         
-  )
-}           
+    <div className="flex-shrink-0 h-full w-[300px] p-5 bg-yellow-400 rounded-xl">
+      <div className="flex justify-between items-center">
+        <h3 className="bg-red-600 text-sm px-3 py-1 rounded">
+          {data.category}
+        </h3>
 
-export default FailedTask
+        <h4 className="text-sm">
+          {data.taskDate}
+        </h4>
+      </div>
+
+      <h2 className="mt-5 text-2xl font-semibold">
+        {data.taskTitle}
+      </h2>
+
+      <p className="text-sm mt-2">
+        {data.taskDescription}
+      </p>
+
+      <div className="mt-6">
+        <button className="w-full bg-red-500 rounded font-medium py-1 px-2 text-xs">
+          Failed
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default FailedTask;
