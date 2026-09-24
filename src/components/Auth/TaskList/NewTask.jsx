@@ -1,21 +1,21 @@
 import React from 'react'
 
-const NewTask = (props) => {
-  return (
-    <div className=" bg-green-400 flex-shrink-0 text-white font-bold p-5  rounded-2xl text-2xl h-full w-[300px]">
-          <div className='flex justify-between'>
-            <h3 className='bg-red-600 px-3 text-sm py-1 rounded'>{props.data.category}</h3>
-            <h4 className='text-lg'>{props.data.date}</h4>
-          </div>
-            <h2 className='text-xl mt-2 font-bold'>{props.data.title}</h2>
-            <p className='mt-5 text-sm'>{props.data.description}</p>
-            <div className='  mt-5'>
-            <button className="bg-green-500 text-white text-lg px-2 py-1 rounded">Accept Task</button>
-            
-      </div>
-      </div>
-         
-  )
+const NewTask = ({data}) => {
+    return (
+        <div className='flex-shrink-0 h-full w-[300px] p-5 bg-green-400 rounded-xl'>
+            <div className='flex justify-between items-center'>
+                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>{data.category}</h3>
+                <h4 className='text-sm'>{data.taskDate}</h4>
+            </div>
+            <h2 className='mt-5 text-2xl font-semibold'>{data.taskTitle}</h2>
+            <p className='text-sm mt-2'>
+                {data.taskDescription}
+            </p>
+            <div className='mt-6'>
+                <button className='bg-blue-500 rounded font-medium py-1 px-2 text-xs'>Accept Task</button>
+            </div>
+        </div>
+    )
 }
 
 export default NewTask
